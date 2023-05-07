@@ -32,3 +32,9 @@
 *.app
 
 *.kdev4
+
+
+/Bin
+/Build
+/build
+/Docs
