@@ -21,9 +21,8 @@
  * will be empty and ready for dynamic usage.
  */
 
-template <std::size_t N = 0>
-class dynamic_bitset {
- public:
+template <std::size_t N = 0> class dynamic_bitset {
+public:
   /**
    * @brief Default constructor that initializes the bitset with the default
    * size.
@@ -88,7 +87,8 @@ class dynamic_bitset {
     int number_of_padding = bits_.size() - strlen(binary);
     std::vector<bool> binaries;
 
-    while (*binary != '\0') binaries.emplace_back(*binary++ == '1');
+    while (*binary != '\0')
+      binaries.emplace_back(*binary++ == '1');
 
     add_padding(binaries, number_of_padding);
     bits_ = std::move(binaries);
@@ -226,7 +226,8 @@ class dynamic_bitset {
    */
   std::string to_string() const {
     std::string str;
-    for (const auto &bit : bits_) str.push_back(bit == true ? '1' : '0');
+    for (const auto &bit : bits_)
+      str.push_back(bit == true ? '1' : '0');
 
     return str;
   }
@@ -246,7 +247,8 @@ class dynamic_bitset {
     std::size_t value = 0;
     std::size_t power = 1;
     for (auto it = bits_.rbegin(); it != bits_.rend(); ++it) {
-      if (*it) value += power;
+      if (*it)
+        value += power;
       power *= 2;
     }
     return value;
@@ -283,7 +285,8 @@ class dynamic_bitset {
   dynamic_bitset operator&(const dynamic_bitset &other) const {
     std::size_t size = std::min(bits_.size(), other.size());
     std::vector<bool> set;
-    for (int i = 0; i < size; ++i) set.emplace_back(other[i] && bits_[i]);
+    for (int i = 0; i < size; ++i)
+      set.emplace_back(other[i] && bits_[i]);
     return dynamic_bitset(set);
   }
 
@@ -294,7 +297,8 @@ class dynamic_bitset {
 
   dynamic_bitset &operator&=(const dynamic_bitset &other) {
     std::size_t size = std::min(bits_.size(), other.size());
-    for (int i = 0; i < size; ++i) bits_[i] = bits_[i] && other.bits_[i];
+    for (int i = 0; i < size; ++i)
+      bits_[i] = bits_[i] && other.bits_[i];
     return *this;
   }
 
@@ -305,7 +309,8 @@ class dynamic_bitset {
   dynamic_bitset operator|(const dynamic_bitset &other) const {
     std::size_t size = std::min(bits_.size(), other.size());
     std::vector<bool> set;
-    for (int i = 0; i < size; ++i) set.emplace_back(other[i] || bits_[i]);
+    for (int i = 0; i < size; ++i)
+      set.emplace_back(other[i] || bits_[i]);
     return dynamic_bitset(set);
   }
 
@@ -317,7 +322,8 @@ class dynamic_bitset {
   dynamic_bitset &operator|=(const dynamic_bitset &other) {
     std::size_t size = std::min(bits_.size(), other.size());
     std::vector<bool> set;
-    for (int i = 0; i < size; ++i) bits_[i] = bits_[i] || other.bits_[i];
+    for (int i = 0; i < size; ++i)
+      bits_[i] = bits_[i] || other.bits_[i];
     return *this;
   }
 
@@ -328,7 +334,8 @@ class dynamic_bitset {
   dynamic_bitset operator^(const dynamic_bitset &other) const {
     std::size_t size = std::min(bits_.size(), other.size());
     std::vector<bool> set;
-    for (int i = 0; i < size; ++i) set.emplace_back(other[i] ^ bits_[i]);
+    for (int i = 0; i < size; ++i)
+      set.emplace_back(other[i] ^ bits_[i]);
     return dynamic_bitset(set);
   }
 
@@ -339,9 +346,22 @@ class dynamic_bitset {
   dynamic_bitset &operator^=(const dynamic_bitset &other) {
     std::size_t size = std::min(bits_.size(), other.size());
     std::vector<bool> set;
-    for (int i = 0; i < size; ++i) bits_[i] = bits_[i] ^ other.bits_[i];
+    for (int i = 0; i < size; ++i)
+      bits_[i] = bits_[i] ^ other.bits_[i];
     return *this;
   }
+
+  /**
+   * @brief begin iterator
+   * @return dynamic_bitset begin itreator
+   */
+  std::vector<bool>::iterator begin() { return bits_.begin(); }
+
+  /**
+   * @brief begin iterator
+   * @return dynamic_bitset begin itreator
+   */
+  std::vector<bool>::iterator end() { return bits_.end(); }
 
   /**
    * @brief ostream operator to print dynamic_bitset
@@ -368,7 +388,7 @@ class dynamic_bitset {
     return input;
   }
 
- private:
+private:
   /**
    * @brief Convert strign to binary bitset with using padding
    * @return none
@@ -377,7 +397,8 @@ class dynamic_bitset {
   std::vector<bool> string_to_bitset(const std::string &binary_string) {
     int number_of_padding = bits_.size() - binary_string.size();
     std::vector<bool> binaries;
-    for (const char &c : binary_string) binaries.emplace_back(c == '1');
+    for (const char &c : binary_string)
+      binaries.emplace_back(c == '1');
     add_padding(binaries, number_of_padding);
     return binaries;
   }
@@ -387,7 +408,8 @@ class dynamic_bitset {
    * @return none
    */
   void add_padding(std::vector<bool> &base, int number_of_padding) {
-    for (int i = 0; i < number_of_padding; ++i) base.insert(base.begin(), 0);
+    for (int i = 0; i < number_of_padding; ++i)
+      base.insert(base.begin(), 0);
   }
 
   /**
@@ -400,7 +422,8 @@ class dynamic_bitset {
       temp.insert(temp.begin(), static_cast<bool>(value % 2));
       value /= 2;
     }
-    if (temp.empty()) temp.emplace_back(value);
+    if (temp.empty())
+      temp.emplace_back(value);
     return temp;
   }
 
