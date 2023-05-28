@@ -1,9 +1,7 @@
 name: Release Library
-
 on:
-  release:
-    types: [published, created, released]
-        tags:
+  push:
+    tags:
       - "v*"
 
 jobs:
@@ -67,4 +65,5 @@ jobs:
         with:
           repo_token: "${{ secrets.DEPLOY_TOKEN}}"
           prerelease: false
-          automatic_release_tag: ${{ steps.parse_tag.outputs.VERSION }}
+          automatic_release_tag: ${{ steps.parse_tag.outputs.VERSION }}"
+
