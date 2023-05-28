@@ -62,11 +62,14 @@ jobs:
           VERSION=$(echo "${TAG_NAME}" | sed 's/"//g')
           echo "::set-output name=VERSION::${VERSION}"
         
-      # Release version files
-      - name: Release
-        uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repo_token: "${{ secrets.DEPLOY_TOKEN}}"
-          prerelease: false
-          automatic_release_tag: ${{ steps.parse_tag.outputs.VERSION }}"
+          tag_name: ${{ steps.parse_tag.outputs.VERSION }}
+          release_name: Release ${{ steps.parse_tag.outputs.VERSION }}
+          body: |
+            Release ${{ steps.parse_tag.outputs.VERSION }}
+            See the [changelog](https://github.com/${{ github.repository }}/releases/tag/${{ steps.parse_tag.outputs.VERSION }}) for details.
 
