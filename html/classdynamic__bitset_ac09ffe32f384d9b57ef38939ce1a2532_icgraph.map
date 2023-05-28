@@ -1,0 +1,9 @@
+<map id="dynamic_bitset::size" name="dynamic_bitset::size">
+<area shape="rect" id="node1" title="Return size of the bitset." alt="" coords="260,132,416,159"/>
+<area shape="rect" id="node2" href="$classdynamic__bitset.html#a829b89f129cad771b06ecd3e79a72bd7" title="and operator between two dynamic_bitset" alt="" coords="11,5,206,32"/>
+<area shape="rect" id="node3" href="$classdynamic__bitset.html#a352b160b4034aff14612837db5e0b0d0" title="and operator between two dynamic_bitset and change orginal set" alt="" coords="5,56,212,83"/>
+<area shape="rect" id="node4" href="$classdynamic__bitset.html#adb2ee94b6c35828f00d9452b9723f5fb" title="xor operator between two dynamic_bitset" alt="" coords="11,107,207,133"/>
+<area shape="rect" id="node5" href="$classdynamic__bitset.html#aec05e1f301493054b5ce3ad9b92726a9" title="xor operator between two dynamic_bitset and change orginal set" alt="" coords="5,157,212,184"/>
+<area shape="rect" id="node6" href="$classdynamic__bitset.html#add648ec5e8f5085008293141515fa65d" title="or operator between two dynamic_bitset" alt="" coords="14,208,203,235"/>
+<area shape="rect" id="node7" href="$classdynamic__bitset.html#a8a9a5a67d99cbe0d0c0973db38f7fe42" title="or operator between two dynamic_bitset and change orginal set" alt="" coords="9,259,209,285"/>
+</map>
