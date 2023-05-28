@@ -81,6 +81,22 @@ TEST(string_to_binary, BasicAssertions) {
   EXPECT_EQ(expected, y.get());
 }
 
+TEST(left_shift_operator, BasicAssertions) {
+  std::vector<bool> expected = {1, 0, 1, 0, 0};
+
+  dynamic_bitset<> y = std::string("10101");
+  y <<= 2;
+  EXPECT_EQ(expected, y.get());
+}
+
+TEST(right_shift_operator, BasicAssertions) {
+  std::vector<bool> expected = {0, 0, 1, 0, 1};
+
+  dynamic_bitset<> y = std::string("10101");
+  y >>= 2;
+  EXPECT_EQ(expected, y.get());
+}
+
 TEST(input_stream, BasicAssertions) {
   dynamic_bitset<> x;
   std::istringstream stream("10101");

@@ -352,6 +352,44 @@ public:
   }
 
   /**
+   * @brief Left Shift operator
+   * @tparam shift_amount, amount of the shift that will used for left shifting
+   * @return dynamic_bitset itself
+   */
+  dynamic_bitset &operator<<=(std::size_t shift_amount) {
+    if (shift_amount >= bits_.size())
+      bits_.assign(bits_.size(), false);
+    else {
+      // shift all bits to left
+      for (std::size_t i = 0; i < bits_.size(); ++i)
+        bits_[i] = bits_[i + shift_amount];
+      // fill shifted position
+      for (std::size_t i = bits_.size() - shift_amount; i < bits_.size(); ++i)
+        bits_[i] = false;
+    }
+    return *this;
+  }
+
+  /**
+   * @brief Right Shift operator
+   * @tparam shift_amount, amount of the shift that will used for right shifting
+   * @return dynamic_bitset itself
+   */
+  dynamic_bitset &operator>>=(std::size_t shift_amount) {
+    if (shift_amount >= bits_.size())
+      bits_.assign(bits_.size(), false);
+    else {
+      // shift all bits to  right
+      for (std::size_t i = bits_.size() - 1; i >= shift_amount; --i)
+        bits_[i] = bits_[i - shift_amount];
+      // fill shifted position
+      for (std::size_t i = 0; i < shift_amount; ++i)
+        bits_[i] = false;
+    }
+    return *this;
+  }
+
+  /**
    * @brief begin iterator
    * @return dynamic_bitset begin itreator
    */
