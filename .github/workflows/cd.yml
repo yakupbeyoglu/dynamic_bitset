@@ -1,14 +1,15 @@
-name: Release Library
+name: Dynamic Bitset Release
+
 on:
   push:
     tags:
       - "v*"
 
 jobs:
-  release:
-    name: CD
+  build:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-  
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,7 +20,7 @@ jobs:
         run: |
           sudo apt-get update -y
 
-      - name: Add g++ 10 for c++ 17 support
+      - name: Add g++ 10 for C++ 17 support
         run: |
           sudo apt install gcc-10 g++-10
           sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 --slave /usr/bin/g++ g++ /usr/bin/g++-10 --slave /usr/bin/gcov gcov /usr/bin/gcov-10
@@ -41,24 +42,23 @@ jobs:
         working-directory: ./build
         run: |
           sudo ctest --verbose
-       
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: ./Docs
-      
+
       - name: Print Deployed URL
         run: |
-          echo "Deployed URL: https://${{ github.repository }}.github.io/${{ env.REPO_NAME }}/html"
+          echo "Deployed URL: https://${{ github.repository_owner }}.github.io/${{ env.REPO_NAME }}/html"
         env:
           REPO_NAME: ${{ github.repository_name }}
-      
-      # parse Tag name
+
       - name: Parse Tag Name
         id: parse_tag
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-      
+        
       # Release version files
       - name: Release
         uses: "marvinpinto/action-automatic-releases@latest"
