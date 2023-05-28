@@ -1,9 +1,6 @@
-name: Dynamic Bitset Release
-on:
-  push:
-    tags:
-      - "v*"
+name: Release Library
 
+on:
   release:
     types: [published, created, released]
 
