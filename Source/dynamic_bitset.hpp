@@ -162,7 +162,7 @@ public:
    * @param index The index of the bit.
    * @return The value of the bit at the given index.
    */
-  bool operator[](std::size_t index) const { return bits_[index]; }
+  bool operator[](std::size_t index) const { return bits_.at(index); }
 
   /**
    * @brief Check if all bits in dynamic_bitset are true.
@@ -196,7 +196,7 @@ public:
    * @return Reference bit on the given index
    */
   inline std::vector<bool>::reference operator[](std::size_t index) {
-    return bits_[index];
+    return bits_.at(index);
   }
 
   /**

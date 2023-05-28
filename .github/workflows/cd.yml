@@ -49,12 +49,6 @@ jobs:
           github_token: ${{ secrets.DEPLOY_TOKEN }}
           publish_dir: ./Docs
 
-      - name: Print Deployed URL
-        run: |
-          echo "Deployed URL: https://${{ github.repository_owner }}.github.io/${{ env.REPO_NAME }}/html/classdynamic_bitset.html"
-        env:
-          REPO_NAME: ${{ github.repository_name }}
-
       - name: Parse Tag Name
         id: parse_tag
         run: |
@@ -71,5 +65,4 @@ jobs:
           release_name: Release ${{ steps.parse_tag.outputs.VERSION }}
           body: |
             Release ${{ steps.parse_tag.outputs.VERSION }}
-            See the [changelog](https://github.com/${{ github.repository }}/releases/tag/${{ steps.parse_tag.outputs.VERSION }}) for details.
-
+            Check [Docs](https://yakupbeyoglu.github.io/dynamic_bitset/html/classdynamic__bitset.html)
