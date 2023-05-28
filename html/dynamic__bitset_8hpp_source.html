@@ -147,7 +147,7 @@ $(function() {
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
 <div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="classdynamic__bitset.html#a18aaeaf12eb84bc62163c319f1f660c9">  158</a></span>&#160;  <span class="keyword">const</span> std::vector&lt;bool&gt; &amp;<a class="code" href="classdynamic__bitset.html#a18aaeaf12eb84bc62163c319f1f660c9">get</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bits_; }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classdynamic__bitset.html#ae0fbd0b68c5d2774a50154560a6d3176">  165</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classdynamic__bitset.html#ae0fbd0b68c5d2774a50154560a6d3176">operator[]</a>(std::size_t index)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bits_[index]; }</div>
+<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="classdynamic__bitset.html#ae0fbd0b68c5d2774a50154560a6d3176">  165</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classdynamic__bitset.html#ae0fbd0b68c5d2774a50154560a6d3176">operator[]</a>(std::size_t index)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bits_.at(index); }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
 <div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="classdynamic__bitset.html#a4e050c3b445c86855a98cf72dd334239">  171</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classdynamic__bitset.html#a4e050c3b445c86855a98cf72dd334239">all</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">return</span> std::all_of(std::begin(bits_), std::end(bits_),</div>
@@ -165,7 +165,7 @@ $(function() {
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  }</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
 <div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="classdynamic__bitset.html#ab2552bf4960d6d7cc67bb7c4e62a8818">  198</a></span>&#160;  <span class="keyword">inline</span> std::vector&lt;bool&gt;::reference <a class="code" href="classdynamic__bitset.html#ab2552bf4960d6d7cc67bb7c4e62a8818">operator[]</a>(std::size_t index) {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> bits_[index];</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> bits_.at(index);</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  }</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="classdynamic__bitset.html#ac09ffe32f384d9b57ef38939ce1a2532">  206</a></span>&#160;  constexpr std::size_t <a class="code" href="classdynamic__bitset.html#ac09ffe32f384d9b57ef38939ce1a2532">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> bits_.size(); }</div>
