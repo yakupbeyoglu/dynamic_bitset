@@ -3,6 +3,8 @@ name: Release Library
 on:
   release:
     types: [published, created, released]
+        tags:
+      - "v*"
 
 jobs:
   release:
