@@ -51,13 +51,16 @@ jobs:
 
       - name: Print Deployed URL
         run: |
-          echo "Deployed URL: https://${{ github.repository_owner }}.github.io/${{ env.REPO_NAME }}/html"
+          echo "Deployed URL: https://${{ github.repository_owner }}.github.io/${{ env.REPO_NAME }}/html/classdynamic_bitset.html"
         env:
           REPO_NAME: ${{ github.repository_name }}
 
       - name: Parse Tag Name
         id: parse_tag
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        run: |
+          TAG_NAME=$(echo "${GITHUB_REF}" | sed 's/refs\/tags\///')
+          VERSION=$(echo "${TAG_NAME}" | sed 's/"//g')
+          echo "::set-output name=VERSION::${VERSION}"
         
       # Release version files
       - name: Release
